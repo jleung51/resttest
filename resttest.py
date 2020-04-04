@@ -11,10 +11,10 @@ import requests
 
 
 def json_path_to_str(path):
+    if path is None:
+        return ''
     if isinstance(path, list):
         return '.'.join(path)
-    elif path is None:
-        return ''
     return path
 
 
