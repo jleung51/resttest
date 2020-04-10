@@ -48,6 +48,8 @@ class ApiTest(unittest.TestCase):
 
     # noinspection PyMethodMayBeStatic
     def send_request(self, url, http_method=None, headers=None):
+        if url is None or url == "":
+            raise RuntimeError('A URL is required.')
         if http_method is None:
             http_method = HttpMethod.GET
 
