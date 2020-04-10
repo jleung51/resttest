@@ -32,7 +32,7 @@ class ApiTest(unittest.TestCase):
     @staticmethod
     def health_check_or_die(url=None):
         if url is None:
-            raise Exception('Parameter [url] was not given but is required.')
+            raise ValueError('Parameter [url] was not given but is required.')
 
         # noinspection PyBroadException
         try:
@@ -57,7 +57,7 @@ class ApiTest(unittest.TestCase):
         if http_method == HttpMethod.GET:
             resp = requests.get(url, headers=headers)
         else:
-            raise Exception('Unimplemented REST method.')
+            raise NotImplementedError('Unimplemented REST method ' + str(http_method) + '.')
 
         try:
             body = resp.json()
