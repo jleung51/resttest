@@ -39,9 +39,9 @@ class ApiTest(unittest.TestCase):
             resp = requests.get(url)
             resp.raise_for_status()
         except requests.exceptions.ConnectionError:
-            raise Exception('Failed to connect to ' + url + '. Is the server running?')
+            raise RuntimeError('Failed to connect to ' + url + '. Is the server running?')
         except requests.exceptions.Timeout:
-            raise Exception('Timed out while attempting to connect to ' + url + '. Is the server running?')
+            raise RuntimeError('Timed out while attempting to connect to ' + url + '. Is the server running?')
         except Exception:
             pass
         logging.info('Health check passed.')
